@@ -1,0 +1,23 @@
+date,region,event_type,impact_score,summary
+2024-01-15,India,SupplyChain,0.36,Red Sea shipping disruptions causing 15-20 day delays on electronics imports via Suez Canal
+2024-01-28,Global,Geopolitical,0.52,US-China semiconductor export restrictions tightened — chip supply uncertainty for Q2
+2024-02-10,India,Regulatory,0.29,BIS mandates new quality certification for imported consumer electronics effective April 2024
+2024-02-15,India,SupplyChain,0.39,Mumbai & Chennai port congestion — container dwell times up 40% due to monsoon infrastructure repairs
+2024-03-05,India,Economic,0.18,RBI holds repo rate at 6.5% — consumer credit conditions stable for electronics purchases
+2024-03-15,India,MarketTrend,0.12,Amazon Great Indian Festival early access drives 22% spike in online electronics sales
+2024-04-15,India,SupplyChain,0.33,Global copper prices surge 18% — PCB and wiring harness costs impacted across appliance manufacturing
+2024-05-01,India,Regulatory,0.41,India raises import duty on finished electronics from 15% to 20% — domestic manufacturing push
+2024-05-15,India,Climate,0.18,Early monsoon onset disrupts last-mile delivery in Maharashtra and Karnataka — 12% order delays
+2024-06-15,India,Competitive,0.29,Xiaomi launches aggressive pricing on Redmi Note series — undercutting market by 15%
+2024-06-28,Global,SupplyChain,0.45,TSMC factory shutdown in Taiwan due to earthquake — global chip shortage fears resurface
+2024-07-15,India,Economic,0.22,GST Council revises rates on smart TVs from 28% to 18% — price correction expected
+2024-08-01,India,MarketTrend,0.15,Independence Day sale season — Flipkart Big Billion Days announced for August 6-12
+2024-08-15,India,Climate,0.12,Severe flooding in Gujarat disrupts warehousing — 3 distribution centers temporarily offline
+2024-09-10,India,Competitive,0.35,Samsung launches Galaxy FE series at aggressive price points — direct competition with BlueBrand
+2024-09-15,India,SupplyChain,0.20,Lithium-ion battery shortage easing — cell prices down 8% QoQ benefiting smartphone production
+2024-10-01,India,MarketTrend,0.48,Diwali festive season demand surge — pre-orders up 35% vs last year across electronics
+2024-10-15,India,Regulatory,0.30,PLI scheme Phase 2 disbursements begin — ₹2400 Cr incentives for domestic electronics manufacturing
+2024-11-05,Global,Geopolitical,0.38,EU Carbon Border Tax impacts shipping costs — 5-8% logistics cost increase on European imports
+2024-11-15,India,Economic,0.26,Consumer confidence index rises to 89.4 — highest in 18 months; discretionary spending outlook positive
+2024-12-01,India,Competitive,0.32,Reliance JioMart expands electronics category — aggressive cashback offers on appliances
+2024-12-15,India,SupplyChain,0.39,Year-end inventory crunch — semiconductor lead times stretch to 16 weeks for display panels

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BluePill AI – Retail Pricing Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">BluePill AI</div>
+      <div class="subtitle">Retail Pricing Strategy Assistant</div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Product Input</h2>
+        <div class="form-grid">
+          <label>
+            SKU
+            <select id="sku">
+              <option value="TV-IND-001">Smart TV 55" (BlueBrand)</option>
+              <option value="MB-IND-002">Smartphone Pro (BlueBrand)</option>
+            </select>
+          </label>
+          <label>
+            Region
+            <select id="region">
+              <option value="India">India</option>
+            </select>
+          </label>
+          <button id="run">Get Pricing Strategy</button>
+        </div>
+      </section>
+
+      <section class="card" id="result-card">
+        <h2>Recommendation</h2>
+        <div id="result" class="result">Loading…</div>
+      </section>
+
+      <section class="card" id="drivers-card">
+        <h2>Why this recommendation?</h2>
+        <div class="columns">
+          <div>
+            <h3>Drivers</h3>
+            <ul id="drivers"></ul>
+          </div>
+          <div>
+            <h3>Risks</h3>
+            <ul id="risks"></ul>
+          </div>
+        </div>
+        <p class="summary" id="summary"></p>
+      </section>
+    </main>
+
+    <footer>
+      Built for demo purposes • Forecasting + Pricing + Sentiment + Risk
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

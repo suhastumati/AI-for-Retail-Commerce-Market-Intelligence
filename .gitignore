@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Live data cache (regenerated at runtime)
+AI/demo_app/cache/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+
+# Credentials
+access_key*.json
+access-key*.json
+*.backup

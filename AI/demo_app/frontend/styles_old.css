@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f7f8fb;
+  color: #0d1321;
+}
+
+header {
+  background: linear-gradient(120deg, #0a4dd9, #3b82f6);
+  color: white;
+  padding: 32px 64px;
+}
+
+.brand {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+main {
+  padding: 32px 64px 64px;
+  display: grid;
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(13, 19, 33, 0.08);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+select, button {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e6f0;
+}
+
+button {
+  background: #0a4dd9;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #124ac3;
+}
+
+.result {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.summary {
+  margin-top: 16px;
+  color: #4b5563;
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #6b7280;
+}
