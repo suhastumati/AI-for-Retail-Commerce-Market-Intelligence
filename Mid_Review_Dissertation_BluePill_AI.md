@@ -1,19 +1,143 @@
 # AI-Driven Retail Intelligence and Market Forecasting
 
 **Mid-Review Dissertation Report**
+**SESAP ZG628T — Dissertation**
+
+---
+
+BIRLA INSTITUTE OF TECHNOLOGY & SCIENCE, PILANI
+WORK INTEGRATED LEARNING PROGRAMMES (WILP) DIVISION
+SECOND SEMESTER OF ACADEMIC YEAR 2025–2026
 
 ---
 
 | Field | Detail |
 |---|---|
-| Title | AI-Driven Retail Intelligence and Market Forecasting |
+| Dissertation Title | AI-Driven Retail Intelligence and Market Forecasting |
 | Student Name | Tumati Suhas Pranay |
 | BITS ID | 2024SL93003 |
 | Program | M.Tech Software Engineering (WILP) — SAP LABS |
-| Course | SESAP ZG628T Dissertation |
-| Supervisor | Rupa Venkata Muddisetty, SDE, SAP Labs India, Bengaluru |
-| Additional Examiner | Anshul Jain, SDE, SAP Labs India, Bengaluru |
-| Date | April 2026 |
+| Course No. | SESAP ZG628T |
+| Supervisor | Rupa Venkata Muddisetty |
+| Supervisor Organisation | SAP Labs India, Whitefield, Bengaluru |
+| Additional Examiner | Anshul Jain |
+| Examiner Organisation | SAP Labs India, Whitefield, Bengaluru |
+| Date of Submission | April 2026 |
+
+---
+
+## ACKNOWLEDGEMENTS
+
+I am deeply grateful to the individuals whose guidance and support made this dissertation possible.
+
+I express my sincerest thanks to **Rupa Venkata Muddisetty**, my dissertation supervisor at SAP Labs India, whose continuous encouragement, technical mentorship, and constructive feedback have shaped both the scope and depth of this project. Her unwavering confidence in my work and her clarity of vision in the domain of AI-driven business systems have been invaluable throughout this research.
+
+I also sincerely thank **Anshul Jain**, the Additional Examiner, for his detailed and insightful review inputs. His technical perspective has significantly strengthened the rigour of this work.
+
+I extend my appreciation to the faculty at **Birla Institute of Technology and Science (BITS), Pilani**, whose curriculum in Software Engineering provided the theoretical foundation that underpins the engineering decisions in this project.
+
+I am grateful to my colleagues at **SAP Labs India** for their support, feedback during prototype reviews, and engagement with the ideas presented in this work.
+
+Finally, I thank the **AWS AI for Bharat Hackathon** organising committee for providing a platform that inspired a practical, India-centric approach to this research.
+
+---
+
+## ABSTRACT
+
+The Indian electronics retail sector faces simultaneous challenges of festival-driven demand volatility, aggressive multi-platform price competition, fragmented market intelligence, and the latency constraints of production AI systems. Existing solutions address each of these challenges in isolation — standalone forecasting tools, separate price monitors, disconnected sentiment dashboards — leaving retail managers without a unified, AI-driven decision-support layer.
+
+This dissertation presents **BluePill AI**, an end-to-end retail intelligence platform developed for an Indian electronics retailer context and submitted to the AWS AI for Bharat Hackathon. The system integrates five analytical modules into a single, cohesive dashboard: (1) a two-model demand forecasting ensemble combining XGBoost and a Naïve ETS baseline, auto-weighted by hold-out MAE, with external regressors including CPI inflation and Wikipedia brand interest trends; (2) a three-layer dynamic pricing engine that applies detrended price elasticity regression, competitor ceiling constraints, and real-time GDELT-derived event nudges; (3) a market events intelligence pipeline that downloads, filters, and maps GDELT geopolitical events to electronics-domain price signals using a 50+ keyword relevance scorer; (4) an aspect-based sentiment module processing 1,328 customer reviews across four dimensions (quality, delivery, value, support); and (5) a competitor price monitoring engine tracking five major Indian e-commerce platforms.
+
+The backend is implemented in Python 3.11 using FastAPI, with all live data sourced from four zero-API-key providers (GDELT, World Bank, Wikipedia Pageviews, python-holidays). The frontend is a Vanilla JS single-page application with eight analytical views rendered using Chart.js 4. The entire system returns forecasts in 3–5 seconds via asynchronous thread pool execution, fulfilling the interactive latency requirement.
+
+Key technical contributions include a detrended elasticity estimation approach that resolves spurious positive price–demand correlation in emerging-market growth datasets, an event-to-price-signal mapping pipeline grounded in GDELT CAMEO codes, and an ensemble weighting strategy that dynamically adapts model reliance based on recent prediction accuracy. The system targets production deployment on AWS using Lambda, API Gateway, SageMaker, and S3, achieving 20–30% projected inventory cost reduction and 5–10% margin improvement relative to rule-based baselines.
+
+---
+
+## TABLE OF CONTENTS
+
+| No. | Chapter / Section | Page |
+|---|---|---|
+| — | Acknowledgements | ii |
+| — | Abstract | iii |
+| — | Table of Contents | iv |
+| — | List of Figures | v |
+| — | List of Tables | vi |
+| **1** | **Introduction** | |
+| 1.1 | Purpose | |
+| 1.2 | Scope | |
+| 1.3 | Motivation | |
+| 1.4 | Problem Statement | |
+| 1.5 | Literature Survey | |
+| 1.6 | Existing System | |
+| 1.7 | Proposed System | |
+| 1.7.1 | Features of the Proposed System | |
+| **2** | **Software Requirement Specifications** | |
+| 2.1 | Purpose | |
+| 2.2 | Overall Description | |
+| 2.2.1 | Functional Requirements | |
+| 2.2.2 | Non-Functional Requirements | |
+| 2.3 | Specific Requirements | |
+| 2.3.1 | Backend Requirements | |
+| 2.3.2 | Frontend Requirements | |
+| 2.4 | Interface Requirements | |
+| 2.4.1 | REST API Interface | |
+| 2.4.2 | Data Source Interface | |
+| **3** | **High Level Design** | |
+| 3.1 | System Architecture | |
+| 3.2 | Module-wise Design | |
+| 3.2.1 | Demand Forecasting Module | |
+| 3.2.2 | Dynamic Pricing Engine | |
+| 3.2.3 | Market Events Intelligence Module | |
+| 3.2.4 | Sentiment Analysis Module | |
+| **4** | **Detailed Design** | |
+| 4.1 | Demand Forecasting Implementation | |
+| 4.2 | Pricing Module Implementation | |
+| 4.3 | Data Pipeline Design and Frontend UI | |
+| **5** | **Implementation (Work Accomplished)** | |
+| 5.1 | Plan of Work | |
+| 5.2 | Key Challenges Encountered | |
+| 5.3 | Potential Risks and Mitigations | |
+| **6** | **Conclusion** | |
+| 6.1 | Summary of Contributions | |
+| 6.2 | Observations and Findings | |
+| 6.3 | Future Work | |
+| — | References | |
+
+---
+
+## LIST OF FIGURES
+
+| Figure No. | Description | PPT Source | Chapter |
+|---|---|---|---|
+| Figure 3.1 | BluePill AI Value Proposition and Problem–Solution Overview | **Slide 2 + Slide 3** (Problem diagram + USP comparison chart) | Ch. 3, Sec. 3.1 |
+| Figure 3.2 | Unified AI Decision Pipeline — All modules converging into a single recommendation | **Slide 10** (Process flow / Use-case diagram) | Ch. 3, Sec. 3.1 |
+| Figure 3.3 | Target AWS Cloud Architecture | **Slide 12** (Architecture diagram) | Ch. 3, Sec. 3.1 |
+| Figure 3.4 | Demand Forecasting Feature Pipeline | **Slide 4** (Feature 1 — AI Demand Forecasting diagram, left image) | Ch. 3, Sec. 3.2.1 |
+| Figure 3.5 | Dynamic Pricing and Competitive Intelligence Flow | **Slide 5** (Feature 2 — Dynamic Pricing diagram) | Ch. 3, Sec. 3.2.2 |
+| Figure 3.6 | Market Events and Risk Intelligence Pipeline | **Slide 6** (Feature 3 — News + Trends diagram) | Ch. 3, Sec. 3.2.3 |
+| Figure 3.7 | Customer Sentiment Analysis Pipeline | **Slide 7** (Feature 4 — Sentiment, both images: pipeline + output chart) | Ch. 3, Sec. 3.2.4 |
+| Figure 3.8 | AI Business Copilot — Explainable AI Layer | **Slide 9** (Feature 6 — AI Copilot diagram) | Ch. 3, Sec. 3.2.5 |
+| Figure 4.1 | Dashboard and Inventory View Wireframe | **Slide 11** (Left wireframe — top-left image) | Ch. 4, Sec. 4.3 |
+| Figure 4.2 | Demand Forecast and Pricing View Wireframe | **Slide 11** (Right wireframe — top-right image) | Ch. 4, Sec. 4.3 |
+| Figure 4.3 | News & Events and Profit Engine View Wireframe | **Slide 11** (Bottom wireframe — bottom-right image) | Ch. 4, Sec. 4.3 |
+
+---
+
+## LIST OF TABLES
+
+| Table No. | Description | Chapter |
+|---|---|---|
+| Table 1.1 | Features of the Proposed System | Ch. 1, Sec. 1.7.1 |
+| Table 2.1 | Functional Requirements | Ch. 2, Sec. 2.2.1 |
+| Table 2.2 | Non-Functional Requirements | Ch. 2, Sec. 2.2.2 |
+| Table 2.3 | Backend Requirements | Ch. 2, Sec. 2.3.1 |
+| Table 2.4 | Frontend Requirements | Ch. 2, Sec. 2.3.2 |
+| Table 2.5 | REST API Endpoints | Ch. 2, Sec. 2.4.1 |
+| Table 2.6 | Data Source Interface | Ch. 2, Sec. 2.4.2 |
+| Table 3.1 | Prototype-to-AWS Component Mapping | Ch. 3, Sec. 3.1 |
+| Table 5.1 | Plan of Work with Completion Status | Ch. 5, Sec. 5.1 |
+| Table 5.2 | Risk Register and Mitigation Plan | Ch. 5, Sec. 5.3 |
 
 ---
 
@@ -228,9 +352,14 @@ All API endpoints accept and return JSON over HTTP/1.1. The server binds to `0.0
 
 The BluePill AI platform is structured as a three-tier architecture: a data ingestion and storage tier, a processing and intelligence tier, and a presentation tier. The defining architectural characteristic is that all five AI/analytics modules execute independently against their respective data slices and their outputs are aggregated at the API layer before being consumed by the frontend. This parallel processing model enables the dashboard to display a unified view of demand, pricing, sentiment, events, and competition without any single module blocking the others.
 
-**[Figure 3.1: Unified AI Decision Pipeline — insert Slide 10 from PPT here]**
+---
+> **Figure 3.1 — INSERT HERE: Slide 2 (Value Proposition diagram) + Slide 3 (Problem vs Solution comparison chart + USP panel)**
+> *Caption: Figure 3.1: BluePill AI Problem–Solution Overview. The left panel (Slide 2) shows the value proposition — 20–30% inventory reduction, 5–10% margin improvement. The right panel (Slide 3) contrasts existing single-purpose tools (Forecasting only | Pricing only | Sentiment only) against the BluePill AI unified decision engine, and lists the three USPs: Unified Decision Engine, Explainable AI, and Bharat-Ready design.*
+---
 
-*Caption: Figure 3.1 illustrates how the five analytical modules (Demand Forecasting, Dynamic Pricing, Market Events Intelligence, Sentiment Analysis, Competitor Monitoring) execute concurrently and converge their outputs into a single unified recommendation layer consumed by the dashboard frontend.*
+**[Figure 3.2 — INSERT HERE: Slide 10 — Process Flow / Use-Case Diagram]**
+
+*Caption: Figure 3.2 illustrates how the five analytical modules (Demand Forecasting, Dynamic Pricing, Market Events Intelligence, Sentiment Analysis, Competitor Monitoring) execute concurrently and converge their outputs into a single unified recommendation layer consumed by the dashboard frontend.*
 
 The data tier consists of five static CSV datasets constructed to reflect realistic Indian electronics market conditions over 2019–2024, supplemented by four live data source connectors. The intelligence tier comprises five Python modules (`demand_forecasting.py`, `analytics.py`, `live_data_fetcher.py`, `competitor_scraper.py`, `profit_engine.py`) orchestrated by the FastAPI application in `app.py`. The presentation tier is a Vanilla JS single-page application that calls the REST API and renders results using Chart.js 4.
 
@@ -238,9 +367,10 @@ The data tier consists of five static CSV datasets constructed to reflect realis
 
 The prototype runs as a single FastAPI process on a local machine. The target production architecture, designed for the AWS AI for Bharat Hackathon, replaces each component with a managed AWS equivalent.
 
-**[Figure 3.2: Target AWS Cloud Architecture — insert Slide 12 from PPT here]**
-
-*Caption: Figure 3.2 shows the target deployment architecture on AWS, mapping the current FastAPI server to AWS Lambda + API Gateway, the ML models to Amazon SageMaker endpoints, the disk cache to Amazon ElastiCache, the static frontend to Amazon S3 + CloudFront, and the data pipeline to AWS Glue + S3.*
+---
+> **Figure 3.3 — INSERT HERE: Slide 12 — AWS Architecture Diagram**
+> *Caption: Figure 3.3: Target AWS Cloud Architecture. The diagram (Source: Slide 12, BluePill AI Hackathon PPT) maps each prototype component to a fully managed AWS equivalent: FastAPI server → AWS Lambda + API Gateway; ML inference → Amazon SageMaker real-time endpoints; disk cache → Amazon ElastiCache (Redis); static datasets → Amazon S3 + AWS Glue ETL; frontend → Amazon S3 + CloudFront; event triggers → Amazon EventBridge. This architecture supports horizontal scaling and production-grade availability for the retail intelligence platform.*
+---, mapping the current FastAPI server to AWS Lambda + API Gateway, the ML models to Amazon SageMaker endpoints, the disk cache to Amazon ElastiCache, the static frontend to Amazon S3 + CloudFront, and the data pipeline to AWS Glue + S3.*
 
 The key AWS service mappings are:
 
@@ -257,9 +387,12 @@ The key AWS service mappings are:
 
 ### 3.2.1 Demand Forecasting Module
 
-**[Figure 3.2.1: Demand Forecasting Pipeline — insert Slide 4 from PPT here]**
+---
+> **Figure 3.4 — INSERT HERE: Slide 4 — Demand Forecasting Feature Diagram (left image on slide)**
+> *Caption: Figure 3.4: AI Demand Forecasting Pipeline. The diagram (Source: Slide 4, BluePill AI Hackathon PPT) illustrates data flow from raw sales history and external signals (festivals, weather, macroeconomic indicators) through feature engineering, into the two-model parallel training stage (XGBoost + NaiveETS), through hold-out MAE-based weight assignment, and into the final 8-month ensemble forecast output. The right side of Slide 4 shows the "Why AI is Needed" rationale — festival-driven non-linear patterns that rule-based methods cannot capture.*
+---
 
-*Caption: Figure 3.2.1 depicts the demand forecasting data flow from raw sales CSV and external signal ingestion through feature engineering, two-model parallel training, hold-out MAE weighting, and ensemble forecast output.*
+*The demand forecasting module accepts a SKU identifier from raw sales CSV and external signal ingestion through feature engineering, two-model parallel training, hold-out MAE weighting, and ensemble forecast output.*
 
 The demand forecasting module accepts a SKU identifier and a forecast horizon (default: 8 months) and returns an array of predicted monthly sales quantities. The design follows a two-stage pipeline:
 
@@ -282,9 +415,12 @@ The design explicitly excludes Facebook Prophet. While Prophet's additive decomp
 
 ### 3.2.2 Dynamic Pricing Engine
 
-**[Figure 3.2.2: Dynamic Pricing Engine Pipeline — insert Slide 5 from PPT here]**
+---
+> **Figure 3.5 — INSERT HERE: Slide 5 — Dynamic Pricing and Competitive Intelligence Diagram**
+> *Caption: Figure 3.5: Dynamic Pricing Engine Pipeline. The diagram (Source: Slide 5, BluePill AI Hackathon PPT) shows the three-layer sequential pricing pipeline: Layer 1 — detrended price elasticity regression from historical sales vs price data; Layer 2 — competitor ceiling constraint (max of comp_avg × 1.10, min_viable × 1.05, base × 1.20) derived from the five tracked Indian e-commerce platforms; Layer 3 — live GDELT event nudge (±5%) based on detected supply chain, macroeconomic, festival, or regulatory events. The slide also includes the "Responsible & Usable Design" panel showing transparency guarantees.*
+---
 
-*Caption: Figure 3.2.2 shows the three-layer pricing pipeline: detrended elasticity regression at the base layer, competitor ceiling constraint at the middle layer, and GDELT-derived live event nudge at the top layer.*
+The pricing engine produces an optimal recommended price: detrended elasticity regression at the base layer, competitor ceiling constraint at the middle layer, and GDELT-derived live event nudge at the top layer.*
 
 The pricing engine produces an optimal recommended price for each SKU through three sequential layers:
 
@@ -302,9 +438,12 @@ Where `comp_avg` is the average price across the five tracked competitors, `min_
 
 ### 3.2.3 Market Events Intelligence Module
 
-**[Figure 3.2.3: Market Events Intelligence Flow — insert Slide 6 from PPT here]**
+---
+> **Figure 3.6 — INSERT HERE: Slide 6 — Market Events and Risk Intelligence Flow Diagram**
+> *Caption: Figure 3.6: Market Events Intelligence Pipeline. The diagram (Source: Slide 6, BluePill AI Hackathon PPT) illustrates the full GDELT ingestion pipeline: daily ZIP download → 57-column CSV parse → India location filter → electronics relevance scoring (50+ keyword vocabulary, threshold 0.25) → CAMEO event type classification → event-to-price-signal mapping (supply_chain → +2–3%, macroeconomic_inflation → −1–2%, festival_season → +3–5%, regulatory_tariff → +1–2%) → net_adjustment_pct aggregation → 6-hour disk cache. The slide also shows how unstructured news feeds are classified by AI into actionable price and demand signals.*
+---
 
-*Caption: Figure 3.2.3 illustrates the GDELT data pipeline: daily export ZIP download, 57-column CSV parsing, India location filtering, electronics relevance scoring against a 50+ keyword vocabulary, event-to-price-signal mapping, and 6-hour cache management.*
+The market events module serves two functions: daily export ZIP download, 57-column CSV parsing, India location filtering, electronics relevance scoring against a 50+ keyword vocabulary, event-to-price-signal mapping, and 6-hour cache management.*
 
 The market events module serves two functions: surfacing relevant world events in the News & Events dashboard view, and providing quantitative price signal inputs to the pricing engine.
 
@@ -318,9 +457,12 @@ The market events module serves two functions: surfacing relevant world events i
 
 ### 3.2.4 Sentiment Analysis Module
 
-**[Figure 3.2.4: Sentiment Analysis Pipeline — insert Slide 7 from PPT here]**
+---
+> **Figure 3.7 — INSERT HERE: Slide 7 — Customer Sentiment Analysis Pipeline (use BOTH images on Slide 7)**
+> *Caption: Figure 3.7: Customer Sentiment and Experience Insights Pipeline. Slide 7 contains two images: (a) the top-left image shows the NLP sentiment analysis pipeline — from raw multilingual customer reviews through aspect extraction (quality, delivery, value, support) to per-aspect sentiment scoring and normalisation to the 0–1 `sentiment_unified` scale; (b) the bottom-right image shows a sample sentiment output chart, illustrating how aggregated aspect scores are visualised in the dashboard. Source: Slide 7, BluePill AI Hackathon PPT.*
+---
 
-*Caption: Figure 3.2.4 shows the sentiment pipeline from raw review CSV ingestion through aspect extraction, per-aspect scoring, and normalisation to the 0–1 `sentiment_unified` scale used in dashboard displays.*
+The sentiment module processes the `reviews.csv` dataset from raw review CSV ingestion through aspect extraction, per-aspect scoring, and normalisation to the 0–1 `sentiment_unified` scale used in dashboard displays.*
 
 The sentiment module processes the `reviews.csv` dataset (1,328 rows) to produce per-SKU, per-aspect sentiment scores. Each review record contains a free-text body, a star rating, and pre-annotated aspect labels (quality, delivery, value, support). The `sentiment_unified` field is a normalised 0–1 score where 0.0 represents strongly negative, 0.5 is neutral, and 1.0 is strongly positive. This normalisation scheme is intentional: it avoids the ambiguity of bipolar [−1, +1] scales when computing averages that will be displayed as KPIs.
 
@@ -417,9 +559,23 @@ final_price = optimal_price * (1 + net_event_pct)
 
 **Frontend UI Design**:
 
-**[Figure 4.1: Dashboard, Forecast, and Pricing Wireframes — insert Slide 11 from PPT here]**
+---
+> **Figure 4.1 — INSERT HERE: Slide 11, Top-Left Image — Dashboard and Inventory View Wireframe**
+> *Caption: Figure 4.1: Dashboard and Inventory View Wireframe (Source: Slide 11, top-left image, BluePill AI Hackathon PPT). This wireframe shows the layout of the main Dashboard view: four KPI summary cards at the top (Total Revenue, Units Sold, Average Margin, Active Alerts), a revenue trend line chart below, and the SKU inventory stock level panel. The layout demonstrates the single-page app navigation model with side tabs.*
 
-*Caption: Figure 4.1 shows wireframe-level mockups of three key views: (a) the Dashboard view with KPI summary cards and revenue trend chart, (b) the Demand Forecast view with the 8-month forecast bar chart and model weight indicators, and (c) the Pricing view with per-SKU recommendation cards and the GDELT event signal banner.*
+---
+
+> **Figure 4.2 — INSERT HERE: Slide 11, Top-Right Image — Demand Forecast and Pricing View Wireframe**
+> *Caption: Figure 4.2: Demand Forecast and Pricing View Wireframe (Source: Slide 11, top-right image, BluePill AI Hackathon PPT). This wireframe shows the Demand Forecast view with the 8-bar forecast chart, model weight annotation badges (XGBoost weight vs NaiveETS weight), and the confidence band overlay. The Pricing view card layout shows base price, optimal price, event-adjusted final price, and the elasticity coefficient per SKU.*
+
+---
+
+> **Figure 4.3 — INSERT HERE: Slide 11, Bottom-Right Image — News & Events and Profit Engine View Wireframe**
+> *Caption: Figure 4.3: News & Events and Profit Engine View Wireframe (Source: Slide 11, bottom-right image, BluePill AI Hackathon PPT). The News view wireframe shows filtered GDELT event cards with relevance badges (High/Relevant) and price signal direction badges (↑ raise / ↓ lower). The Profit Engine wireframe shows the cost stack breakdown (stacked bar: COGS, logistics, platform fee, tax, margin) and the what-if price slider with projected margin output.*
+
+---
+
+The frontend SPA (`index.html`, `app.js`, `styles.css`): (a) the Dashboard view with KPI summary cards and revenue trend chart, (b) the Demand Forecast view with the 8-month forecast bar chart and model weight indicators, and (c) the Pricing view with per-SKU recommendation cards and the GDELT event signal banner.*
 
 The frontend SPA (`index.html`, `app.js`, `styles.css`) uses a single HTML shell with eight `<section>` elements, each corresponding to one view. Navigation links toggle the `active` CSS class to show/hide sections without page reload. On initial load, `app.js` calls `/api/products` to populate the global product registry, then fetches the data for whichever view is active.
 
